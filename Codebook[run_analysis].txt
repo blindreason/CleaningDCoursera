@@ -1,0 +1,165 @@
+==================================================================
+run_analysis.R
+for Cleaning Data with R (Coursera)
+==================================================================
+Michael A Choi
+==================================================================
+
+This script takes in data from a UCI Machine Learning data repository
+
+Source:
+
+Jorge L. Reyes-Ortiz, Davide Anguita, Alessandro Ghio, Luca Oneto.
+Smartlab - Non Linear Complex Systems Laboratory
+DITEN - Universit√  degli Studi di Genova, Genoa I-16145, Italy.
+activityrecognition '@' smartlab.ws
+www.smartlab.ws
+
+
+Script function:
+
+/Loading
+
+Loads in information from X, Y, subject datasets from both training and test sets.
+
+
+/Filtering & Binding & Tidy naming
+
+Uses grep to look for variables pertaining to mean() and std(). It also filters out 		"BodyBody" variables as these are perceived to be an artifact of the original data processing.
+
+This filters down into 66 X variables.
+
+Training & Test sets are row bound and Subject/Y are column bound.
+
+Tidy names are inserted for each X variable to make them human readable.
+
+
+/Data processing
+
+The resultant large tidy data set is melted down and recast to provide averages for each X variable by activity and subject.
+
+
+The full dataset includes the following (68) columns:
+=========================================
+
+/Identifying Variables
+SubjectID: A number (1-30) indicating 1 of 30 volunteers
+ActivityID: A number 1-6 denoting which activity was done of:
+1 WALKING
+
+2 WALKING_UPSTAIRS
+
+3 WALKING_DOWNSTAIRS
+
+4 SITTING
+
+5 STANDING
+
+6 LAYING
+
+
+
+/Measurement Variables
+Measurement Variables are named with 3 separate parts divided by an _underscore according to the following convention:
+
+Type of processing
+[Time/Frequency domain + Mean/Standard Deviation]
+
+[Isolated movement name: Acceleration minus Gravity, Jerk is the change in acceleration, Gyro is a measurement from the gyroscope vs the 3-axis accelerometer]
+
+[Directionality: Axis (X, Y, or Z) or Magnitude (Euclidean norm of X,Y,Z)]
+
+/Notes
+1. All variables are derived through processing from a raw time-domain 3-axis and gyroscope signals
+
+2. Frequency signals are processed from time domain signals by passing them through a Fast Fourier Transform.
+
+
+
+/Body Acceleration:
+"TimeAvg_BodyAcceleration_XAxis"
+"TimeAvg_BodyAcceleration_YAxis"
+"TimeAvg_BodyAcceleration_ZAxis"
+"TimeStandardDev_BodyAcceleration_XAxis"
+"TimeStandardDev_BodyAcceleration_YAxis"
+"TimeStandardDev_BodyAcceleration_ZAxis"
+"TimeAvg_BodyAcceleration_Magnitude"
+"TimeStandardDev_BodyAcceleration_Magnitude"
+
+"FrequencyAvg_BodyAcceleration_XAxis"
+"FrequencyAvg_BodyAcceleration_YAxis"
+"FrequencyAvg_BodyAcceleration_ZAxis"
+"FrequencyStandardDev_BodyAcceleration_XAxis"
+"FrequencyStandardDev_BodyAcceleration_YAxis"
+"FrequencyStandardDev_BodyAcceleration_ZAxis"
+"FrequencyAvg_BodyAcceleration_Magnitude"
+"FrequencyStandardDev_BodyAcceleration_Magnitude"
+
+/Gravity Acceleration:
+"TimeAvg_GravityAcceleration_XAxis"
+"TimeAvg_GravityAcceleration_YAxis"
+"TimeAvg_GravityAcceleration_ZAxis"
+"TimeStandardDev_GravityAcceleration_XAxis"
+"TimeStandardDev_GravityAcceleration_YAxis"
+"TimeStandardDev_GravityAcceleration_ZAxis"
+"TimeAvg_GravityAcceleration_Magnitude"
+
+/Body Acceleration Jerk:
+"TimeAvg_BodyAccelerationJerk_XAxis"
+"TimeAvg_BodyAccelerationJerk_YAxis"
+"TimeAvg_BodyAccelerationJerk_ZAxis"
+"TimeStandardDev_BodyAccelerationJerk_XAxis"
+"TimeStandardDev_BodyAccelerationJerk_YAxis"
+"TimeStandardDev_BodyAccelerationJerk_ZAxis"
+"TimeAvg_BodyAccelerationJerk_Magnitude"
+"TimeStandardDev_BodyAccelerationJerk_Magnitude"
+"FrequencyAvg_BodyAccelerationJerk_XAxis"
+"FrequencyAvg_BodyAccelerationJerk_YAxis"
+"FrequencyAvg_BodyAccelerationJerk_ZAxis"
+"FrequencyStandardDev_BodyAccelerationJerk_XAxis"
+"FrequencyStandardDev_BodyAccelerationJerk_YAxis"
+"FrequencyStandardDev_BodyAccelerationJerk_ZAxis"
+"FrequencyAvg_BodyAccelerationJerk_Magnitude"
+"FrequencyStandardDev_BodyAccelerationJerk_Magnitude"
+
+/Body Gyro
+"TimeAvg_BodyGyro_XAxis"
+"TimeAvg_BodyGyro_YAxis"
+"TimeAvg_BodyGyro_ZAxis"
+"TimeStandardDev_BodyGyro_XAxis"
+"TimeStandardDev_BodyGyro_YAxis"
+"TimeStandardDev_BodyGyro_ZAxis"
+"TimeAvg_BodyGyro_Magnitude"
+"TimeStandardDev_BodyGyro_Magnitude"
+"FrequencyAvg_BodyGyro_XAxis"
+"FrequencyAvg_BodyGyro_YAxis"
+"FrequencyAvg_BodyGyro_ZAxis"
+"FrequencyStandardDev_BodyGyro_XAxis"
+"FrequencyStandardDev_BodyGyro_YAxis"
+"FrequencyStandardDev_BodyGyro_ZAxis"
+"FrequencyAvg_BodyGyro_Magnitude"
+"FrequencyStandardDev_BodyGyro_Magnitude"
+
+/Body Gyro Jerk
+"TimeAvg_BodyGyroJerk_XAxis"
+"TimeAvg_BodyGyroJerk_YAxis"
+"TimeAvg_BodyGyroJerk_ZAxis"
+"TimeStandardDev_BodyGyroJerk_XAxis"
+"TimeStandardDev_BodyGyroJerk_YAxis"
+"TimeStandardDev_BodyGyroJerk_ZAxis"
+"TimeAvg_BodyGyroJerk_Magnitude"
+"TimeStandardDev_BodyGyroJerk_Magnitude"
+"FrequencyAvg_BodyGyroJerk_Magnitude"
+"FrequencyStandardDev_BodyGyroJerk_Magnitude"
+
+
+              
+  
+ 
+
+ 
+       
+  
+
+
+         
